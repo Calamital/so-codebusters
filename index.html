@@ -1,0 +1,67 @@
+<head>
+  <link
+    href="https://fonts.googleapis.com/css?family=Inconsolata"
+    rel="stylesheet"
+  />
+  <script src = "main.js"></script>
+  <link ref = "stylesheet" href = "style.css">
+  <meta charset="UTF-8">
+</head>
+<body>
+    <div class = "top">
+    <hr>
+    <p class = "title"><b>Caiamitai's Codebusters Cipher Generator (2025-2026 SO)</b></p>
+    <p class = "title">Please tell me if there's any bugs!</p>
+    <hr>
+    <table class = "ciphers" id = "cipherButtons">
+      <tr>
+        <select name = "Cipher Type" id = "cipherType">
+          <option value = "simple">Simple</option>
+          <option value = "crib">With Crib</option>
+          <option value = "cryptanalysis">Cryptanalysis</option>
+        </select>
+      </tr>
+      <tr>
+        <td class = "button"><button class = "Y" onclick = "main('aristocrat')">Generate Aristocrat</button></td>
+        <td class = "button"><button class = "Y" onclick = "main('aristocratk1')">Generate K1 Aristocrat</button></td>
+        <td class = "button"><button class = "Y" onclick = "main('aristocratk2')">Generate K2 Aristocrat</button></td>
+        <td class = "button"><button class = "Y" onclick = "main('aristocratk3')">Generate K3 Aristocrat</button></td>
+      </tr>
+      <tr>
+        <td class = "button"><button class = "N" onclick = "baconian()">Generate Baconian</button></td>
+        <td class = "button"><button class = "N" onclick = "letterBaconian()">Generate Letter Baconian</button></td>
+        <td class = "button"><button class = "N" onclick = "wordBaconian()">Generate Word Baconian</button></td>
+      </tr>
+      <tr>
+        <td class = "button"><button class = "N" onclick = "checkerboard()">Generate 5x5 Checkerboard</button></td>
+      </tr>
+      <tr>
+        <td class = "button"><button class = "N" onclick = "cct()">Generate CCT</button></td>
+      </tr>
+      <tr>
+        <td class = "button"><button class = "N" onclick = "cryptarithm()">Generate Cryptarithm</button></td>
+      </tr>
+      <tr>
+        <td class = "button"><button class = "N" onclick = "hill()">Generate Hill</button></td>
+      </tr>
+      <tr>
+        <td class = "button"><button class = "N" onclick = "nihilist()">Generate Nihilist</button></td>
+      </tr>
+      <tr>
+        <td class = "button"><button class = "Y" onclick = "main('patristocrat')">Generate Patristocrat</button></td>
+        <td class = "button"><button class = "Y" onclick = "main('patristocratk1')">Generate K1 Patristocrat</button></td>
+        <td class = "button"><button class = "Y" onclick = "main('patristocratk2')">Generate K2 Patristocrat</button></td>
+      </tr>
+      <tr>
+        <td class = "button"><button class = "Y" onclick = "main('porta')">Generate Porta</button></td>
+      </tr>
+    </table>
+  </div>
+  <hr>
+  <div class="cipher" id = "cipher">
+    <p class = "name" id = "name"></p>
+    <p calss = "hint" id = "hint"></p>
+    <hr>
+    <p class = "cipherText" id = "cipherText"></p>
+  </div>
+</body>

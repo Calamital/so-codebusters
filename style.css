@@ -1,0 +1,88 @@
+:root {
+    --border: 2px solid #000;
+}
+select {
+    width: 200px;
+    height: 40px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-family: "Inconsolata";
+    margin-left: 1px;
+    background-color: #EEE;
+}
+button {
+    height: 40px;
+    width: 200px;
+    transition: 0.2s ease-in-out;
+}
+button:hover {
+    background-color: #ECE;
+    border: 2.5px solid #CAC;
+}
+.Y {
+    background-color: #CCE;
+    border: 2.5px solid #AAC;
+}
+.N {
+    background-color: #ECC;
+    border: 2.5px solid #CAA;
+}
+.ciphers {
+    border: 0px;
+}
+p {
+    font-size: 14px;
+}
+.top {
+    margin-top: 20px;
+}
+hr {
+    border: 1px solid #555;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+.name {
+    font-size: 18px;
+}
+button, .title {
+    font-size: 18px;
+    font-family: "Inconsolata";
+    margin-right: 5px;
+    margin-bottom: 10px;
+}
+.title {
+    margin-bottom: 15px;
+}
+p, table {
+    font-family: "Inconsolata";
+}
+.cipherText {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 10px;
+    line-height: 80px;
+}
+table {
+    font-size: 18px;
+    border-top: var(--border);
+    border-right: var(--border);
+}
+.button {
+    width: 200px;
+    padding: 0px;
+    border: 0px;
+}
+td {
+    width: 40px;
+    height: 20px;
+    text-align: center;
+    border-left: var(--border);
+    border-bottom: var(--border);
+    padding: 5px;
+}
+.cipher {
+    border: var(--border);
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+}
