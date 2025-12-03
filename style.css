@@ -1,6 +1,7 @@
 :root {
-    --border: 2px solid #000;
+    --border: 2px solid #EEE;
 }
+
 select {
     width: 200px;
     height: 40px;
@@ -8,81 +9,126 @@ select {
     margin-bottom: 10px;
     font-family: "Inconsolata";
     margin-left: 1px;
-    background-color: #EEE;
+    background: linear-gradient(0deg,rgba(56, 56, 56, 1) 0%, rgba(93, 82, 112, 1) 100%);
+    background-color: #333;
+    color: #FFF;
 }
+
 button {
-    height: 40px;
+    height: 50px;
     width: 200px;
     transition: 0.2s ease-in-out;
 }
+
 button:hover {
-    background-color: #ECE;
-    border: 2.5px solid #CAC;
+    background: linear-gradient(0deg,rgba(252, 252, 252, 1) 0%, rgba(132, 116, 163, 1) 100%);
+    color: #111;
+    border: 2.5px solid rgb(126, 126, 126);
 }
+
 .Y {
-    background-color: #CCE;
-    border: 2.5px solid #AAC;
+    background: linear-gradient(0deg,rgba(74, 107, 168, 1) 0%, rgba(88, 74, 128, 1) 100%);
+    border: 2.5px solid rgb(131, 131, 196);
 }
+
 .N {
-    background-color: #ECC;
-    border: 2.5px solid #CAA;
+    background: linear-gradient(0deg,rgba(168, 74, 105, 1) 0%, rgba(88, 74, 128, 1) 100%);
+    border: 2.5px solid rgb(199, 102, 102);
 }
+
 .ciphers {
     border: 0px;
 }
+
 p {
     font-size: 14px;
 }
+
 .top {
     margin-top: 20px;
 }
+
 hr {
-    border: 1px solid #555;
+    border: 1px solid #EEE;
     margin-bottom: 20px;
     margin-top: 20px;
 }
+
 .name {
     font-size: 18px;
 }
-button, .title {
+
+button,
+.title {
     font-size: 18px;
     font-family: "Inconsolata";
     margin-right: 5px;
     margin-bottom: 10px;
 }
+
 .title {
     margin-bottom: 15px;
 }
-p, table {
-    font-family: "Inconsolata";
+
+.inner {
+    border: 1px solid #000;
 }
+
+.name,
+.hint,
+.cipherText {
+    color: #000;
+}
+
+.cipher {
+    border: 3px solid #000;
+}
+
+p,
+button {
+    font-family: "Inconsolata";
+    color: #FFF;
+}
+
 .cipherText {
     font-size: 24px;
     font-weight: bold;
     letter-spacing: 10px;
     line-height: 80px;
 }
+
 table {
     font-size: 18px;
-    border-top: var(--border);
-    border-right: var(--border);
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    font-family: "Inconsolata";
 }
+
 .button {
     width: 200px;
     padding: 0px;
     border: 0px;
 }
+
 td {
     width: 40px;
     height: 20px;
     text-align: center;
-    border-left: var(--border);
-    border-bottom: var(--border);
+    border-left: 2px solid #000;
+    border-bottom: 2px solid #000;
     padding: 5px;
+    color: 2px solid #000;
 }
+
 .cipher {
     border: var(--border);
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 20px;
+    width: 1000px;
+    background-color: #FFF;
+}
+
+body {
+    background: linear-gradient(0deg,rgba(39, 60, 66, 1) 0%, rgba(37, 40, 61, 1) 100%);
 }
