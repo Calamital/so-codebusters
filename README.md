@@ -1,17 +1,17 @@
-<h2>[Calamital's Science Olympiad Codebusters Practice Generator](https://calamital.github.io/so-codebusters)</h2>
+## Caiamitai's [Science Olympiad Codebusters Practice Generator](https://calamital.github.io/so-codebusters)
 
-This website features automatic practice problem generators using quotes from [this list](https://github.com/dwyl/quotes) and chooses a random quote from it every time.
+* ###### This website features automatic practice problem generators using quotes from [this list](https://github.com/dwyl/quotes) and chooses a random quote from it every time.
 
-<h4>Ciphers Featured</h4>
+***Let me know if you find any bugs or have any suggestions!***
 
-* Aristocrat ***+ K1, K2, K3***
-* Baconian ***Normal, Letter/Number, Word***
-* 5x5 Checkerboard
-* Complete Columnar Transposition
-* Cryptarithm
-* Hill
-* Nihilist
-* Patristocrat ***+ K1, K2***
-* Porta
+#### Ciphers Featured
 
-**More to come in the future!**
+* ###### Aristocrat ***+ K1, K2, K3***
+* ###### Baconian ***Normal, Letter/Number, Word***
+* ###### 5x5 Checkerboard
+* ###### Complete Columnar Transposition
+* ###### Cryptarithm
+* ###### Hill
+* ###### Nihilist
+* ###### Patristocrat ***+ K1, K2***
+* ###### Porta
