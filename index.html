@@ -4,56 +4,71 @@
   <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8">
 </head>
-
 <body>
   <div class="top">
     <hr>
     <p class="title"><b>Caiamitai's Codebusters Cipher Generator (2025-2026 SO)</b></p>
-    <p class="title">Please tell me if there's any bugs!</p>
     <hr>
-    <table class="ciphers" id="cipherButtons">
+    <table class="ciphers">
+      <p><b>Select Cipher</b></p>
       <tr>
-        <select name="Cipher Type" id="cipherType">
-          <option value="simple">Simple</option>
-          <option value="crib">With Crib</option>
-          <option value="cryptanalysis">Cryptanalysis</option>
-        </select>
-      </tr>
-      <tr>
-        <td class="button"><button class="Y" onclick="main('aristocrat')">Generate Aristocrat</button></td>
-        <td class="button"><button class="Y" onclick="main('aristocratk1')">Generate K1 Aristocrat</button></td>
-        <td class="button"><button class="Y" onclick="main('aristocratk2')">Generate K2 Aristocrat</button></td>
-        <td class="button"><button class="Y" onclick="main('aristocratk3')">Generate K3 Aristocrat</button></td>
-      </tr>
-      <tr>
-        <td class="button"><button class="N" onclick="baconian()">Generate Baconian</button></td>
-        <td class="button"><button class="N" onclick="letterBaconian()">Generate Letter Baconian</button></td>
-        <td class="button"><button class="N" onclick="wordBaconian()">Generate Word Baconian</button></td>
-      </tr>
-      <tr>
-        <td class="button"><button class="N" onclick="checkerboard()">Generate 5x5 Checkerboard</button></td>
-      </tr>
-      <tr>
-        <td class="button"><button class="N" onclick="cct()">Generate CCT</button></td>
-      </tr>
-      <tr>
-        <td class="button"><button class="N" onclick="cryptarithm()">Generate Cryptarithm</button></td>
-      </tr>
-      <tr>
-        <td class="button"><button class="N" onclick="hill()">Generate Hill</button></td>
-      </tr>
-      <tr>
-        <td class="button"><button class="N" onclick="nihilist()">Generate Nihilist</button></td>
-      </tr>
-      <tr>
-        <td class="button"><button class="Y" onclick="main('patristocrat')">Generate Patristocrat</button></td>
-        <td class="button"><button class="Y" onclick="main('patristocratk1')">Generate K1 Patristocrat</button></td>
-        <td class="button"><button class="Y" onclick="main('patristocratk2')">Generate K2 Patristocrat</button></td>
-      </tr>
-      <tr>
-        <td class="button"><button class="Y" onclick="main('porta')">Generate Porta</button></td>
+        <td>
+          <select name="Cipher Type" id="cipherType" class = "cipherType">
+            <option value="simple">Simple</option>
+            <option value="crib">With Crib</option>
+            <option value="cryptanalysis">Cryptanalysis</option>
+          </select>
+        </td>
+        <td>
+          <select name = "K#" id = "k" class = "k">
+            <option value = "none">None</option>
+            <option id = "k1" value = "k1">K1</option>
+            <option id = "k2" value = "k2">K2</option>
+            <option id = "k3" value = "k3">K3</option>
+          </select>
+        </td>
+        <td>
+          <select name = "Select Cipher" id = "selectCipher" class = "selectCipher">
+            <option value = "aristocrat" class = "Y">Aristocrat</option>
+            <option value = "baconian" class = "N">Baconian</option>
+            <option value = "checkerboard" class = "N">Checkerboard</option>
+            <option value = "cct" class = "N">Complete Columnar Transposition</option>
+            <option value = "cryptarithm" class = "N">Cryptarithm</option>
+            <option value = "hill" class = "N">Hill</option>
+            <option value = "nihilist" class = "N">Nihilist</option>
+            <option value = "patristocrat" class = "Y">Patristocrat</option>
+            <option value = "porta" class = "Y">Porta</option>
+          </select>
+        </td>
       </tr>
     </table>
+    <table class = "ciphers2">
+      <p><b>Settings</b></p>
+      <tr>
+        <td>
+          <button class = "generationMode" onclick = "randomGeneration()">Random Cipher</button>
+        </td>
+        <td>
+          <button class = "generationMode" onclick = "customGeneration()">Custom Cipher</button>
+        </td>
+      </tr>
+    </table>
+    <div class = "customSettings">
+      <input id = "author" type = "text" placeholder = "Enter Author Name"></input>
+      <textarea id = "plainText" placeholder= "Enter Plaintext"></textarea>
+      <input id = "keyword1" type = "text" placeholder = "Enter First Keyword"></input>
+      <input id = "keyword2" type = "text" placeholder = "Enter Second Keyword"></input>
+      <table>
+        <tr>
+          <td>
+            <input id = "row" class = "checkerboard" type = "text" placeholder = "Enter Row Designator"></input>
+          </td>
+          <td>
+            <input id = "column" class = "checkerboard" type = "text" placeholder = "Enter Column Designator"></input>
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
   <hr>
   <div class="cipher" id="cipher">

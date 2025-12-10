@@ -22,6 +22,8 @@ class TableConstructor {
     let table = document.getElementById("table");
     try {
       table.remove();
+      document.getElementById("cipherText").innerHTML = "";
+      document.getElementById("author").innerHTML = "";
     } catch {}
   }
   trueModulo(a, b) {
@@ -30,6 +32,7 @@ class TableConstructor {
   createAristocratTable(encoder) {
     let table = document.createElement("table");
     table.id = "table";
+    table.className = "cipherTable";
     document.getElementById("cipher").appendChild(table);
     let row1 = table.insertRow(0);
     let title1 = row1.insertCell(0);
@@ -74,6 +77,7 @@ class TableConstructor {
   createAristocratK1Table(encoder) {
     let table = document.createElement("table");
     table.id = "table";
+    table.className = "cipherTable";
     document.getElementById("cipher").appendChild(table);
     let row1 = table.insertRow(0);
     let title1 = row1.insertCell(0);
@@ -104,6 +108,7 @@ class TableConstructor {
   createAristocratK2Table(encoder) {
     let table = document.createElement("table");
     table.id = "table";
+    table.className = "cipherTable";
     document.getElementById("cipher").appendChild(table);
     let row1 = table.insertRow(0);
     let title1 = row1.insertCell(0);
@@ -134,6 +139,7 @@ class TableConstructor {
   createAristocratK3Table(encoder) {
     let table = document.createElement("table");
     table.id = "table";
+    table.className = "cipherTable";
     document.getElementById("cipher").appendChild(table);
     let row1 = table.insertRow(0);
     let title1 = row1.insertCell(0);
@@ -164,6 +170,7 @@ class TableConstructor {
   createPortaTable() {
     let table = document.createElement("table");
     table.id = "table";
+    table.className = "cipherTable";
     document.getElementById("cipher").appendChild(table);
     let topRow = table.insertRow(0);
     let topLeft = topRow.insertCell(0);
@@ -424,7 +431,6 @@ class Encoder {
         "the keyword is " + encoder.keywords.keyword1;
     }
     function noKeyword(encoder) {
-      console.log("A");
       document.getElementById("hint").innerHTML = "";
     }
     function crib(encoder) {
@@ -636,10 +642,21 @@ class Encoder {
     this.tableConstructor.createPortaTable();
   }
 }
-async function main(cipher) {
+async function main(cipher, override, newAuthor, newPlainText, newKeywords, newDesignators) {
   let encoder = new Encoder();
   encoder.tableConstructor.deleteTable();
   await encoder.prepareEncoder();
+  if (override) {
+    encoder.author = newAuthor;
+    encoder.plainText = newPlainText;
+    encoder.keywords.plainText = newPlainText;
+    encoder.keywords.generateCrib();
+    encoder.keywords.keyword1 = newKeywords[0];
+    encoder.keywords.keyword2 = newKeywords[1];
+    encoder.keywords.rowDesignator = newDesignators[0];
+    encoder.keywords.columnDesignator = newDesignators[1];
+    encoder.alphabets.generateAlphabets();
+  }
   switch (cipher) {
     case "aristocrat":
       encoder.encodeAristocrat(false);
@@ -653,7 +670,6 @@ async function main(cipher) {
     case "aristocratk3":
       encoder.encodeAristocratK3();
       break;
-
     case "patristocrat":
       encoder.encodeAristocrat(true);
       break;
@@ -668,3 +684,106 @@ async function main(cipher) {
       break;
   }
 }
+let generationMode = false;
+async function spawnCipher(override, newAuthor, newPlainText, newKeywords, newDesignators) {
+  const select = document.getElementById("selectCipher");
+  const k = document.getElementById("k").value;
+  let cipher = select.value;
+  if (k != "none") {
+    cipher += k;
+  }
+  if (!override) {
+    await main(cipher, override, "", "", ["", ""], ["", ""]);
+    return;
+  }
+  await main(cipher, override, newAuthor, newPlainText, newKeywords, newDesignators);
+}
+async function randomGeneration() {
+  generationMode = false;
+  await spawnCipher(false, "", "", ["", ""], ["", ""]);
+}
+async function customGeneration() {
+  if (generationMode) {
+    const author = document.getElementById("author").value;
+    const plainText = document.getElementById("plainText").value.toUpperCase();
+    const keyword1 = document.getElementById("keyword1").value;
+    const keyword2 = document.getElementById("keyword2").value;
+    const row = document.getElementById("row").value;
+    const column = document.getElementById("column").value;
+    const cipher = document.getElementById("selectCipher").value;
+    const k = document.getElementById("k").value;
+    if ((cipher == "aristocrat") || (cipher == "patristocrat")) {
+      if (k != "none") {
+        await spawnCipher(true, author, plainText, [keyword1, ""], ["", ""]);
+        return;
+      }
+      await spawnCipher(true, author, plainText, ["", ""], ["", ""]);
+    }
+  }
+  generationMode = true;
+}
+function updateKChoices() {
+  const k1 = document.getElementById("k1");
+  const k2 = document.getElementById("k2");
+  const k3 = document.getElementById("k3");
+  const cipher = document.getElementById("selectCipher").value;
+  k1.style.display = "none";
+  k2.style.display = "none";
+  k3.style.display = "none";
+  if ((cipher != "aristocrat") && (cipher != "patristocrat")) {
+    document.getElementById("k").value = "none";
+  }
+  switch (cipher) {
+    case "aristocrat":
+      k1.style.display = "";
+      k2.style.display = "";
+      k3.style.display = "";
+      break;
+    case "patristocrat":
+      k1.style.display = "";
+      k2.style.display = "";
+      k3.style.display = "none";
+      break;
+  }
+}
+function updateInputChoices() {
+  const author = document.getElementById("author");
+  const plainText = document.getElementById("plainText");
+  const keyword1 = document.getElementById("keyword1");
+  const keyword2 = document.getElementById("keyword2");
+  const row = document.getElementById("row");
+  const column = document.getElementById("column");
+  const cipher = document.getElementById("selectCipher").value;
+  const k = document.getElementById("k").value;
+  author.style.display = "none";
+  plainText.style.display = "none";
+  keyword1.style.display = "none";
+  keyword2.style.display = "none";
+  row.style.display = "none";
+  column.style.display = "none";
+  if (generationMode) {
+    author.style.display = "";
+    plainText.style.display = "";
+    if (k != "none") {
+      keyword1.style.display = "";
+    }
+    if (k == "k4") {
+      keyword2.style.display = "";
+    }
+    switch (cipher) {
+      case "porta":
+        keyword1.style.display = "";
+        break;
+      case "nihilist":
+        keyword1.style.display = "";
+        break;
+      case "checkerboard":
+        row.style.display = "";
+        column.style.display = "";
+        keyword1.style.display = "";
+        break;
+    }
+  }
+}
+setInterval(updateKChoices, 10);
+setInterval(updateInputChoices, 10);

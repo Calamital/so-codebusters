@@ -1,134 +1,100 @@
-:root {
-    --border: 2px solid #EEE;
-}
-
-select {
-    width: 200px;
-    height: 40px;
-    font-size: 18px;
-    margin-bottom: 10px;
-    font-family: "Inconsolata";
-    margin-left: 1px;
-    background: linear-gradient(0deg,rgba(56, 56, 56, 1) 0%, rgba(93, 82, 112, 1) 100%);
-    background-color: #333;
-    color: #FFF;
-}
-
-button {
-    height: 50px;
-    width: 200px;
-    transition: 0.2s ease-in-out;
-}
-
-button:hover {
-    background: linear-gradient(0deg,rgba(252, 252, 252, 1) 0%, rgba(132, 116, 163, 1) 100%);
-    color: #111;
-    border: 2.5px solid rgb(126, 126, 126);
-}
-
-.Y {
-    background: linear-gradient(0deg,rgba(74, 107, 168, 1) 0%, rgba(88, 74, 128, 1) 100%);
-    border: 2.5px solid rgb(131, 131, 196);
-}
-
-.N {
-    background: linear-gradient(0deg,rgba(168, 74, 105, 1) 0%, rgba(88, 74, 128, 1) 100%);
-    border: 2.5px solid rgb(199, 102, 102);
-}
-
-.ciphers {
-    border: 0px;
+body {
+  font-family: "Arial"
 }
 
 p {
-    font-size: 14px;
+  font-size: 20px;
+  background-color: #EEE;
 }
 
-.top {
-    margin-top: 20px;
+.cipher p {
+  background-color: #FFF;
+}
+
+.title {
+  font-size: 26px;
 }
 
 hr {
-    border: 1px solid #EEE;
-    margin-bottom: 20px;
-    margin-top: 20px;
+  border: 1px solid #000;
 }
 
-.name {
-    font-size: 18px;
+select {
+  width: 200px;
+  height: 40px;
+  font-size: 18px;
+  font-family: "Arial";
+  background-color: #EEE;
+  margin-right: 4px;
 }
 
-button,
-.title {
-    font-size: 18px;
-    font-family: "Inconsolata";
-    margin-right: 5px;
-    margin-bottom: 10px;
+.selectCipher {
+  width: 400px;
 }
 
-.title {
-    margin-bottom: 15px;
-}
-
-.inner {
-    border: 1px solid #000;
-}
-
-.name,
-.hint,
-.cipherText {
-    color: #000;
-}
-
-.cipher {
-    border: 3px solid #000;
-}
-
-p,
 button {
-    font-family: "Inconsolata";
-    color: #FFF;
-}
-
-.cipherText {
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: 10px;
-    line-height: 80px;
-}
-
-table {
-    font-size: 18px;
-    border-top: 2px solid #000;
-    border-right: 2px solid #000;
-    font-family: "Inconsolata";
-}
-
-.button {
-    width: 200px;
-    padding: 0px;
-    border: 0px;
-}
-
-td {
-    width: 40px;
-    height: 20px;
-    text-align: center;
-    border-left: 2px solid #000;
-    border-bottom: 2px solid #000;
-    padding: 5px;
-    color: 2px solid #000;
+  width: 150px;
+  height: 30px;
+  font-size: 16px;
+  font-family: "Arial";
+  font-weight: bold;
 }
 
 .cipher {
-    border: var(--border);
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 20px;
-    width: 1000px;
-    background-color: #FFF;
+  border: 1px solid #000;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  width: 1000px;
 }
 
-body {
-    background: linear-gradient(0deg,rgba(39, 60, 66, 1) 0%, rgba(37, 40, 61, 1) 100%);
+.cipherText {
+  font-family: "Inconsolata";
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 10px;
+  line-height: 90px;
+}
+
+#table {
+  border-top: 1px solid #000;
+  border-left: 1px solid #000;
+}
+
+.customSettings {
+  width: 1000px;
+}
+
+#table td {
+  border-bottom: 1px solid #000;
+  border-right: 1px solid #000;
+  padding: 5px;
+  font-family: "Inconsolata";
+  width: 50px;
+  height: 30px;
+  text-align: center;
+  font-size: 18px;
+}
+
+input,
+textarea {
+  width: 500px;
+  font-family: "Arial";
+  background-color: #EEE;
+  color: #000;
+  font-size: 16px;
+  margin-top: 5px;
+  margin-left: 2px;
+  border: 1px solid #000;
+}
+
+.checkerboard {
+  width: 248px;
+  margin-left: 0px;
+}
+
+textarea {
+  height: 150px;
+  font-family: "Inconsolata";
+  resize: none;
 }
