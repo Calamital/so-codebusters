@@ -15,4 +15,3 @@ This website features automatic practice problem generators using quotes from [t
 * Porta
 
 **More to come in the future!**
-**Message me if any bugs or errors arise, or if you have any suggestions!**
