@@ -1,4 +1,4 @@
-<h2>Calamital's Science Olympiad Codebusters Practice Generator</h2>
+<h2>[Calamital's Science Olympiad Codebusters Practice Generator](https://calamital.github.io/so-codebusters)</h2>
 
 This website features automatic practice problem generators using quotes from [this list](https://github.com/dwyl/quotes) and chooses a random quote from it every time.
 
@@ -15,3 +15,4 @@ This website features automatic practice problem generators using quotes from [t
 * Porta
 
 **More to come in the future!**
+**Message me if any bugs or errors arise, or if you have any suggestions!**
