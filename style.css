@@ -26,6 +26,7 @@ select {
   font-family: "Arial";
   background-color: #EEE;
   margin-right: 4px;
+  text-align: center;
 }
 
 .selectCipher {
@@ -36,8 +37,16 @@ button {
   width: 150px;
   height: 30px;
   font-size: 16px;
+  text-align: center;
   font-family: "Arial";
-  font-weight: bold;
+}
+
+.generate {
+  width: 305px;
+  height: 40px;
+  font-size: 18px;
+  margin-top: -2px;
+  margin-left: 2px;
 }
 
 .cipher {

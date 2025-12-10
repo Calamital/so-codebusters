@@ -700,10 +700,14 @@ async function spawnCipher(override, newAuthor, newPlainText, newKeywords, newDe
 }
 async function randomGeneration() {
   generationMode = false;
-  await spawnCipher(false, "", "", ["", ""], ["", ""]);
 }
 async function customGeneration() {
-  if (generationMode) {
+  generationMode = true;
+}
+async function generate() {
+  if (!generationMode) {
+    await spawnCipher(false, "", "", ["", ""], ["", ""]);
+  } else {
     const author = document.getElementById("author").value;
     const plainText = document.getElementById("plainText").value.toUpperCase();
     const keyword1 = document.getElementById("keyword1").value;
@@ -720,7 +724,6 @@ async function customGeneration() {
       await spawnCipher(true, author, plainText, ["", ""], ["", ""]);
     }
   }
-  generationMode = true;
 }
 function updateKChoices() {
   const k1 = document.getElementById("k1");
