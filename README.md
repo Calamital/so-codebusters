@@ -6,12 +6,12 @@
 
 #### Ciphers Featured
 
-* ###### Aristocrat ***+ K1, K2, K3***
-* ###### Baconian ***Normal, Letter/Number, Word***
-* ###### 5x5 Checkerboard
-* ###### Complete Columnar Transposition
-* ###### Cryptarithm
-* ###### Hill
-* ###### Nihilist
-* ###### Patristocrat ***+ K1, K2***
-* ###### Porta
+* Aristocrat ***+ K1, K2, K3***
+* Baconian ***Normal, Letter/Number, Word***
+* 5x5 Checkerboard
+* Complete Columnar Transposition
+* Cryptarithm
+* Hill
+* Nihilist
+* Patristocrat ***+ K1, K2***
+* Porta
