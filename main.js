@@ -411,7 +411,7 @@ class Alphabets {
   }
   generatePolybiusAlphabet() {
     const keyword = this.keywords.removeRepeats(this.keywords.keyword1);
-    this.polybiusAlphabet = this.insertKeyword(0, keyword);
+    this.polybiusAlphabet = this.insertKeyword(0, keyword).filter(letter => letter != "J");
   }
 }
 class Encoder {
