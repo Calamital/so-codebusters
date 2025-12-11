@@ -689,7 +689,6 @@ async function main(cipher, override, newAuthor, newPlainText, newKeywords, newD
       break;
   }
 }
-console.log("C");
 let generationMode = false;
 async function spawnCipher(override, newAuthor, newPlainText, newKeywords, newDesignators) {
   const select = document.getElementById("selectCipher");

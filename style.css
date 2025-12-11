@@ -4,11 +4,17 @@ body {
 
 p {
   font-size: 20px;
-  background-color: #EEE;
+  background-color: #E0E0E7;
+  color: #446;
+}
+
+.cipher p,
+.title {
+  background-color: #FFF;
 }
 
 .cipher p {
-  background-color: #FFF;
+  color: #000;
 }
 
 .title {
@@ -16,16 +22,21 @@ p {
 }
 
 hr {
+  border: 1px solid #446;
+}
+
+.cipher hr {
   border: 1px solid #000;
 }
 
 select {
   width: 200px;
   height: 40px;
+  border: 1px solid #446;
   font-size: 18px;
   font-family: "Arial";
-  background-color: #EEE;
-  margin-right: 4px;
+  background-color: #DDF;
+  margin-right: 1px;
   text-align: center;
 }
 
@@ -39,6 +50,8 @@ button {
   font-size: 16px;
   text-align: center;
   font-family: "Arial";
+  border: 1px solid #446;
+  background-color: #DDF;
 }
 
 .generate {
@@ -50,7 +63,7 @@ button {
 }
 
 .cipher {
-  border: 1px solid #000;
+  border: 2px solid #000;
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
@@ -66,8 +79,8 @@ button {
 }
 
 #table {
-  border-top: 1px solid #000;
-  border-left: 1px solid #000;
+  border-top: 2px solid #000;
+  border-left: 2px solid #000;
 }
 
 .customSettings {
@@ -75,11 +88,11 @@ button {
 }
 
 #table td {
-  border-bottom: 1px solid #000;
-  border-right: 1px solid #000;
+  border-bottom: 2px solid #000;
+  border-right: 2px solid #000;
   padding: 5px;
   font-family: "Inconsolata";
-  width: 50px;
+  width: 20px;
   height: 30px;
   text-align: center;
   font-size: 18px;
@@ -89,12 +102,12 @@ input,
 textarea {
   width: 500px;
   font-family: "Arial";
-  background-color: #EEE;
-  color: #000;
+  background-color: #DDF;
+  color: #446;
   font-size: 16px;
   margin-top: 5px;
   margin-left: 2px;
-  border: 1px solid #000;
+  border: 1px solid #446;
 }
 
 .checkerboard {
