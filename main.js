@@ -196,6 +196,18 @@ class TableConstructor {
       }
     }
   }
+  createPolybiusTable() {
+    let table = document.createElement("table");
+    table.id = "table";
+    table.className = "cipherTable";
+    document.getElementById("cipher").appendChild(table);
+    for (let i = 0; i < 6; i++) {
+      let row = table.insertRow(i);
+      for (let v = 0; v < 6; v++) {
+        row.insertCell(v);
+      }
+    }
+  }
 }
 class Keywords {
   constructor(plainText) {
@@ -454,6 +466,19 @@ class Encoder {
           return noKeyword(encoder);
       }
     }
+    function nihilist(encoder) {
+      switch (encoder.hint) {
+        case "simple":
+          document.getElementById("hint").innerHTML = 
+            "the polybius keyword is " + encoder.keywords.keyword1 +
+            " and the text keyword is " + encoder.keywords.keyword2;
+          break;
+        case "crib":
+          return crib(encoder);
+        case "cryptanalysis":
+          return noKeyword(encoder);
+      }
+    }
     function edgeCase(encoder) {
       switch (encoder.hint) {
         case "simple":
@@ -476,6 +501,12 @@ class Encoder {
         break;
       case "k3 aristocrat":
         mainCase(this);
+        break;
+      case "checkerboard":
+        mainCase(this);
+        break;
+      case "nihilist":
+        nihilist(this);
         break;
       case "patristocrat":
         edgeCase(this);
@@ -648,6 +679,50 @@ class Encoder {
     this.fillCipherText();
     this.tableConstructor.createPortaTable();
   }
+  encodeCheckerboard() {
+    this.cipherType = "checkerboard";
+    this.plainText.split("").forEach((letter) => {
+      if (/\w/.test(letter)) {
+        let index = this.alphabets.polybiusAlphabet.indexOf(letter);
+        if (letter == "J") {
+          index = this.alphabets.polybiusAlphabet.indexOf("I");
+        }
+        let row = Math.floor(index / 5);
+        let column = index % 5;
+        this.cipherText += this.keywords.rowDesignator[row] + this.keywords.columnDesignator[column] + " ";
+      }
+    })
+    this.fillCipherText();
+    this.tableConstructor.createPolybiusTable();
+  }
+  encodeNihilist() {
+    this.cipherType = "nihilist";
+    const keyword = this.keywords.keyword2;
+    let letterIndex = 0;
+    this.plainText.split("").forEach((letter) => {
+      if (/\w/.test(letter)) {
+        let index = this.alphabets.polybiusAlphabet.indexOf(letter);
+        if (letter == "J") {
+          index = this.alphabets.polybiusAlphabet.indexOf("I");
+        }
+        let keywordLetter = keyword[letterIndex % keyword.length];
+        let keywordIndex = this.alphabets.polybiusAlphabet.indexOf(keywordLetter);
+        if (keywordLetter == "J") {
+          keywordIndex = this.alphabets.polybiusAlphabet.indexOf("I");
+        }
+        letterIndex++;
+        let letterRow = 1 + Math.floor(index / 5);
+        let letterColumn = 1 + (index % 5);
+        let letterValue = (10 * letterRow) + letterColumn;
+        let keywordRow = 1 + Math.floor(keywordIndex / 5);
+        let keywordColumn = 1 + (keywordIndex % 5);
+        let keywordValue = (10 * keywordRow) + keywordColumn;
+        this.cipherText += letterValue + keywordValue + " ";
+      }
+    })
+    this.fillCipherText();
+    this.tableConstructor.createPolybiusTable();
+  }
 }
 async function main(cipher, override, newAuthor, newPlainText, newKeywords, newDesignators) {
   let encoder = new Encoder();
@@ -674,6 +749,12 @@ async function main(cipher, override, newAuthor, newPlainText, newKeywords, newD
       break;
     case "aristocratk3":
       encoder.encodeAristocratK3();
+      break;
+    case "checkerboard":
+      encoder.encodeCheckerboard();
+      break;
+    case "nihilist":
+      encoder.encodeNihilist();
       break;
     case "patristocrat":
       encoder.encodeAristocrat(true);
@@ -730,6 +811,12 @@ async function generate() {
     }
     if ((cipher == "porta")) {
       await spawnCipher(true, author, plainText, [keyword1, ""], ["", ""]);
+    }
+    if ((cipher == "checkerboard")) {
+      await spawnCipher(true, author, plainText, [keyword1, ""], [row, column]);
+    }
+    if ((cipher == "nihilist")) {
+      await spawnCipher(true, author, plainText, [keyword1, keyword2], ["", ""]);
     }
   }
 }

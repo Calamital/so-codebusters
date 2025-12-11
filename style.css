@@ -23,6 +23,8 @@ p {
 
 hr {
   border: 1px solid #446;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .cipher hr {
