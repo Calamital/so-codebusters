@@ -412,15 +412,22 @@ class Encoder {
     this.tableConstructor = new TableConstructor();
     this.viewAnswer = false || viewAnswer == true;
   }
-  async prepareEncoder() {
-    let quote = await new Quotes().fetchQuote();
-    this.plainText = quote[0];
-    this.author = quote[1];
-    this.hint = document.getElementById("cipherType").value;
-    this.alphabets = new Alphabets(this.plainText);
-    this.keywords = this.alphabets.keywords;
-    await this.keywords.generateKeywords();
-    this.alphabets.generateAlphabets();
+  async prepareEncoder(override) {
+    if (!override) {
+      let quote = await new Quotes().fetchQuote();
+      this.plainText = quote[0];
+      this.author = quote[1];
+      this.hint = document.getElementById("cipherType").value;
+      this.alphabets = new Alphabets(this.plainText);
+      this.keywords = this.alphabets.keywords;
+      await this.keywords.generateKeywords();
+      this.alphabets.generateAlphabets();
+    } else {
+      this.alphabets = new Alphabets(this.plainText);
+      this.keywords = this.alphabets.keywords;
+      this.keywords.generateCrib();
+      this.alphabets.generateAlphabets();
+    }
   }
   fillCipherText() {
     document.getElementById("name").innerHTML =
@@ -650,12 +657,10 @@ async function main(cipher, override, newAuthor, newPlainText, newKeywords, newD
     encoder.author = newAuthor;
     encoder.plainText = newPlainText;
     encoder.keywords.plainText = newPlainText;
-    encoder.keywords.generateCrib();
-    encoder.keywords.keyword1 = newKeywords[0];
-    encoder.keywords.keyword2 = newKeywords[1];
-    encoder.keywords.rowDesignator = newDesignators[0];
-    encoder.keywords.columnDesignator = newDesignators[1];
-    encoder.alphabets.generateAlphabets();
+    encoder.keywords.keyword1 = newKeywords[0].toUpperCase();
+    encoder.keywords.keyword2 = newKeywords[1].toUpperCase();
+    encoder.keywords.rowDesignator = newDesignators[0].toUpperCase();
+    encoder.keywords.columnDesignator = newDesignators[1].toUpperCase();
   }
   switch (cipher) {
     case "aristocrat":
@@ -684,6 +689,7 @@ async function main(cipher, override, newAuthor, newPlainText, newKeywords, newD
       break;
   }
 }
+console.log("C");
 let generationMode = false;
 async function spawnCipher(override, newAuthor, newPlainText, newKeywords, newDesignators) {
   const select = document.getElementById("selectCipher");
@@ -706,14 +712,14 @@ async function customGeneration() {
 }
 async function generate() {
   if (!generationMode) {
-    await spawnCipher(false, "", "", ["", ""], ["", ""]);
+    await spawnCipher(false);
   } else {
     const author = document.getElementById("author").value;
     const plainText = document.getElementById("plainText").value.toUpperCase();
-    const keyword1 = document.getElementById("keyword1").value;
-    const keyword2 = document.getElementById("keyword2").value;
-    const row = document.getElementById("row").value;
-    const column = document.getElementById("column").value;
+    const keyword1 = document.getElementById("keyword1").value.toUpperCase();
+    const keyword2 = document.getElementById("keyword2").value.toUpperCase();
+    const row = document.getElementById("row").value.toUpperCase();
+    const column = document.getElementById("column").value.toUpperCase();
     const cipher = document.getElementById("selectCipher").value;
     const k = document.getElementById("k").value;
     if ((cipher == "aristocrat") || (cipher == "patristocrat")) {
@@ -722,6 +728,9 @@ async function generate() {
         return;
       }
       await spawnCipher(true, author, plainText, ["", ""], ["", ""]);
+    }
+    if ((cipher == "porta")) {
+      await spawnCipher(true, author, plainText, [keyword1, ""], ["", ""]);
     }
   }
 }
