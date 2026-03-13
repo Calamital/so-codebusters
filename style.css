@@ -5,7 +5,25 @@ body {
 p {
   font-size: 20px;
   background-color: #E0E0E7;
-  color: #446;
+  color: #226;
+}
+
+.anagram,
+.output {
+  width: 400px;
+  margin-left: -2px;
+  margin-top: -10px;
+}
+
+.output {
+  margin-top: 10px;
+}
+
+.solveAnagrams {
+  margin: -2px;
+  margin-top: 10px;
+  width: 200px;
+  height: 30px;
 }
 
 .cipher p,
@@ -15,6 +33,16 @@ p {
 
 .cipher p {
   color: #000;
+}
+
+.bottom {
+  display: flex;
+}
+
+.anagramSolver {
+  margin-left: 10px;
+  margin-top: -20px;
+  width: 400px;
 }
 
 .title {
@@ -110,6 +138,11 @@ textarea {
   margin-top: 5px;
   margin-left: 2px;
   border: 1px solid #446;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #446;
 }
 
 .checkerboard {

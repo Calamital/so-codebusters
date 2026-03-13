@@ -883,5 +883,11 @@ function updateInputChoices() {
     }
   }
 }
+async function solveAnagrams() {
+  let anagramSolver = new AnagramSolver();
+  await anagramSolver.getWords();
+  let anagram = document.getElementById("anagram").value;
+  document.getElementById("output").value = anagramSolver.solveAnagram(anagram);
+}
 setInterval(updateKChoices, 10);
 setInterval(updateInputChoices, 10);

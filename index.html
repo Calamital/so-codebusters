@@ -1,9 +1,11 @@
 <head>
   <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" />
   <script src="main.js"></script>
+  <script src="ciphertools.js"></script>
   <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8">
 </head>
+
 <body>
   <div class="top">
     <hr>
@@ -13,69 +15,77 @@
       <p><b>Select Cipher</b></p>
       <tr>
         <td>
-          <select name="Cipher Type" id="cipherType" class = "cipherType">
+          <select name="Cipher Type" id="cipherType" class="cipherType">
             <option value="simple">Simple</option>
             <option value="crib">With Crib</option>
             <option value="cryptanalysis">Cryptanalysis</option>
           </select>
         </td>
         <td>
-          <select name = "K#" id = "k" class = "k">
-            <option value = "none">None</option>
-            <option id = "k1" value = "k1">K1</option>
-            <option id = "k2" value = "k2">K2</option>
-            <option id = "k3" value = "k3">K3</option>
+          <select name="K#" id="k" class="k">
+            <option value="none">None</option>
+            <option id="k1" value="k1">K1</option>
+            <option id="k2" value="k2">K2</option>
+            <option id="k3" value="k3">K3</option>
           </select>
         </td>
         <td>
-          <select name = "Select Cipher" id = "selectCipher" class = "selectCipher">
-            <option value = "aristocrat" class = "Y">Aristocrat</option>
-            <option value = "baconian" class = "N">Baconian</option>
-            <option value = "checkerboard" class = "N">Checkerboard</option>
-            <option value = "cct" class = "N">Complete Columnar Transposition</option>
-            <option value = "cryptarithm" class = "N">Cryptarithm</option>
-            <option value = "hill" class = "N">Hill</option>
-            <option value = "nihilist" class = "N">Nihilist</option>
-            <option value = "patristocrat" class = "Y">Patristocrat</option>
-            <option value = "porta" class = "Y">Porta</option>
+          <select name="Select Cipher" id="selectCipher" class="selectCipher">
+            <option value="aristocrat" class="Y">Aristocrat</option>
+            <option value="baconian" class="N">Baconian</option>
+            <option value="checkerboard" class="N">Checkerboard</option>
+            <option value="cct" class="N">Complete Columnar Transposition</option>
+            <option value="cryptarithm" class="N">Cryptarithm</option>
+            <option value="hill" class="N">Hill</option>
+            <option value="nihilist" class="N">Nihilist</option>
+            <option value="patristocrat" class="Y">Patristocrat</option>
+            <option value="porta" class="Y">Porta</option>
           </select>
         </td>
       </tr>
     </table>
-    <table class = "ciphers2">
+    <table class="ciphers2">
       <p><b>Settings</b></p>
       <tr>
         <td>
-          <button class = "generationMode" onclick = "randomGeneration()">Random Cipher</button>
+          <button class="generationMode" onclick="randomGeneration()">Random Cipher</button>
         </td>
         <td>
-          <button class = "generationMode" onclick = "customGeneration()">Custom Cipher</button>
+          <button class="generationMode" onclick="customGeneration()">Custom Cipher</button>
         </td>
       </tr>
     </table>
-    <div class = "customSettings">
-      <input id = "author" type = "text" placeholder = "Enter Author Name"></input>
-      <textarea id = "plainText" placeholder= "Enter Plaintext"></textarea>
-      <input id = "keyword1" type = "text" placeholder = "Enter First Keyword"></input>
-      <input id = "keyword2" type = "text" placeholder = "Enter Second Keyword"></input>
+    <div class="customSettings">
+      <input id="author" type="text" placeholder="Enter Author Name"></input>
+      <textarea id="plainText" placeholder="Enter Plaintext"></textarea>
+      <input id="keyword1" type="text" placeholder="Enter First Keyword"></input>
+      <input id="keyword2" type="text" placeholder="Enter Second Keyword"></input>
       <table>
         <tr>
           <td>
-            <input id = "row" class = "checkerboard" type = "text" placeholder = "Enter Row Designator"></input>
+            <input id="row" class="checkerboard" type="text" placeholder="Enter Row Designator"></input>
           </td>
           <td>
-            <input id = "column" class = "checkerboard" type = "text" placeholder = "Enter Column Designator"></input>
+            <input id="column" class="checkerboard" type="text" placeholder="Enter Column Designator"></input>
           </td>
         </tr>
       </table>
     </div>
   </div>
-  <button class = "generate" onclick = "generate()">Generate Cipher!</button>
+  <button class="generate" onclick="generate()">Generate Cipher!</button>
   <hr>
-  <div class="cipher" id="cipher">
-    <p class="name" id="name"></p>
-    <p class="hint" id="hint"></p>
-    <hr class = "inner">
-    <p class="cipherText" id="cipherText"></p>
+  <div class="bottom">
+    <div class="cipher" id="cipher">
+      <p class="name" id="name"></p>
+      <p class="hint" id="hint"></p>
+      <hr class="inner">
+      <p class="cipherText" id="cipherText"></p>
+    </div>
+    <div class="anagramSolver">
+      <p><b>Anagram Solver</b></p>
+      <input class = "anagram" id = "anagram" type = "text" placeholder="Enter Anagram"></input>
+      <textarea class = "output" id = "output" placeholder="Anagrams will appear here" readonly></textarea>
+      <button id = "solveAnagrams" class = "solveAnagrams" onclick = "solveAnagrams()">Generate Anagrams</button>
+    </div>
   </div>
 </body>
