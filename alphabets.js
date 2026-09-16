@@ -8,6 +8,8 @@ class Alphabets {
     this.k2Alphabets = [];
     this.k3Alphabets = [];
     this.polybiusAlphabet = [];
+    this.baconianAlphabet = new Map();
+    this.numberBaconian = new Map();
   }
   test() {
     console.log(this.normalAlphabet);
@@ -16,6 +18,8 @@ class Alphabets {
     console.log(this.k2Alphabets);
     console.log(this.k3Alphabets);
     console.log(this.polybiusAlphabet);
+    console.log(this.baconianAlphabet);
+    console.log(this.numberBaconian);
   }
   generateAlphabets() {
     this.generateNormalAlphabet();
@@ -25,6 +29,8 @@ class Alphabets {
     this.generateK2Alphabets();
     this.generateK3Alphabets();
     this.generatePolybiusAlphabet();
+    this.generateBaconianAlphabet();
+    this.generateNumberBaconian();
   }
   insertKeyword(shift, keyword) {
     let newAlphabet = [...this.normalAlphabet];
@@ -44,6 +50,49 @@ class Alphabets {
     for (let letter = 0; letter < 26; letter++) {
       this.normalAlphabet.push(String.fromCharCode(letter + 65));
     }
+  }
+  generateNumberBaconian() {
+    let digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    for (let i = 0; i < 5; i++) {
+      let index = Math.floor(Math.random() * digits.length);
+      let digit = digits[index];
+      this.numberBaconian.set(digit, "A");
+      digits.splice(index, 1);
+    }
+    for (let i = 0; i < 5; i++) {
+      let index = Math.floor(Math.random() * digits.length);
+      let digit = digits[index];
+      this.numberBaconian.set(digit, "B");
+      digits.splice(index, 1);
+    }
+  }
+  generateBaconianAlphabet() {
+    this.baconianAlphabet.set("A", "AAAAA");
+    this.baconianAlphabet.set("B", "AAAAB");
+    this.baconianAlphabet.set("C", "AAABA");
+    this.baconianAlphabet.set("D", "AAABB");
+    this.baconianAlphabet.set("E", "AABAA");
+    this.baconianAlphabet.set("F", "AABAB");
+    this.baconianAlphabet.set("G", "AABBA");
+    this.baconianAlphabet.set("H", "AABBB");
+    this.baconianAlphabet.set("I", "ABAAA");
+    this.baconianAlphabet.set("J", "ABAAA");
+    this.baconianAlphabet.set("K", "ABAAB");
+    this.baconianAlphabet.set("L", "ABABA");
+    this.baconianAlphabet.set("M", "ABABB");
+    this.baconianAlphabet.set("N", "ABBAA");
+    this.baconianAlphabet.set("O", "ABBAB");
+    this.baconianAlphabet.set("P", "ABBBA");
+    this.baconianAlphabet.set("Q", "ABBBB");
+    this.baconianAlphabet.set("R", "BAAAA");
+    this.baconianAlphabet.set("S", "BAAAB");
+    this.baconianAlphabet.set("T", "BAABA");
+    this.baconianAlphabet.set("U", "BAABB");
+    this.baconianAlphabet.set("V", "BAABB");
+    this.baconianAlphabet.set("W", "BABAA");
+    this.baconianAlphabet.set("X", "BABAB");
+    this.baconianAlphabet.set("Y", "BABBA");
+    this.baconianAlphabet.set("Z", "BABBB");
   }
   generateShuffledAlphabets() {
     let shuffledAlphabet = [...this.normalAlphabet];

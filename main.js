@@ -24,6 +24,12 @@ async function main(cipher, override, newAuthor, newPlainText, newKeywords, newD
     case "aristocratk3":
       encoder.encodeAristocratK3();
       break;
+    case "baconian":
+      encoder.encodeBaconian("normal");
+      break;
+    case "baconiank1":
+      encoder.encodeBaconian("number");
+      break;
     case "checkerboard":
       encoder.encodeCheckerboard();
       break;
@@ -102,7 +108,11 @@ function updateKChoices() {
   k1.style.display = "none";
   k2.style.display = "none";
   k3.style.display = "none";
-  if ((cipher != "aristocrat") && (cipher != "patristocrat")) {
+  document.getElementById("none").innerHTML = "None";
+  k1.innerHTML = "K1";
+  k2.innerHTML = "K2";
+  k3.innerHTML = "K3";
+  if ((cipher != "aristocrat") && (cipher != "patristocrat") && (cipher != "baconian")) {
     document.getElementById("k").value = "none";
   }
   switch (cipher) {
@@ -115,6 +125,14 @@ function updateKChoices() {
       k1.style.display = "";
       k2.style.display = "";
       k3.style.display = "none";
+      break;
+    case "baconian":
+      k1.style.display = "";
+      k2.style.display = "";
+      k3.style.display = "none";
+      document.getElementById("none").innerHTML = "Normal";
+      k1.innerHTML = "Number";
+      k2.innerHTML = "Word"
       break;
   }
 }

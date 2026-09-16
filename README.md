@@ -1,5 +1,7 @@
 # Caiamitai's [Science Olympiad Codebusters Practice](https://calamital.github.io/so-codebusters)
 
+[CISCO firewall bypass version](https://script.google.com/a/macros/students.wcpss.net/s/AKfycbwmll4sUaxmKvYHOMmGZh7s4QpOp_b5eaBNQuSpiIi6q1YokLRfz6iLUnRlldAZK8jKMA/exec)
+
 This is a website I have created to help my friends and I practice for codebusters in North Carolina Science Olympiad. For actual practice tests I recommend going to [the test archive](https://scioly.org/tests/) or [the toebes website](https://toebes.com/codebusters/).
 
 This website features automatic practice problem generators using quotes from [this list](https://github.com/dwyl/quotes) and chooses a random quote from it every time.
@@ -9,12 +11,13 @@ The algorithms I created to encode the ciphers were made from the steps found in
 ## Current Ciphers
 
 * Aristocrat *... K3* and Patristocrat *... K2*
+* Baconian (Normal and Number)
 * Nihilist and Checkerboard
 * Porta
 
 ## Future Ciphers
 
-* Baconian
+* Word Baconian
 * Caesar
 * Complete Columnar Transposition
 * Cryptarithm
@@ -23,5 +26,3 @@ The algorithms I created to encode the ciphers were made from the steps found in
 ---
 
 *Let me know if you find any bugs or have any suggestions for the site!*
-
-[CISCO firewall bypass version](https://script.google.com/a/macros/students.wcpss.net/s/AKfycbwmll4sUaxmKvYHOMmGZh7s4QpOp_b5eaBNQuSpiIi6q1YokLRfz6iLUnRlldAZK8jKMA/exec)

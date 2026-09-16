@@ -7,6 +7,7 @@ class Encoder {
     this.author = "";
     this.tableConstructor = new TableConstructor();
     this.viewAnswer = false || viewAnswer == true;
+    this.baconianKey = new Map();
   }
   async prepareEncoder(override) {
     if (!override) {
@@ -26,6 +27,9 @@ class Encoder {
     }
   }
   fillCipherText() {
+    if (this.cipherType == "baconaink1") {
+      this.cipherType = "number baconian";
+    }
     document.getElementById("name").innerHTML =
       "this " + this.cipherType + " cipher is a quote by " + this.author;
     document.getElementById("cipherText").innerHTML = this.cipherText;
@@ -50,10 +54,35 @@ class Encoder {
           return noKeyword(encoder);
       }
     }
+    function baconian(encoder) {
+      switch(encoder.hint) {
+        case "simple":
+          if (encoder.cipherType == "baconian") {
+            document.getElementById("hint").innerHTML = encoder.baconianKey.get("A") + " decodes to A and " + encoder.baconianKey.get("B") + " decodes to B.";
+          } else if (encoder.cipherType == "baconiank1") {
+            let A = [];
+            let B = [];
+            encoder.alphabets.numberBaconian.forEach((value, key) => {
+              if (value == "A") {
+                A.push(key);
+              }
+              if (value == "B") {
+                B.push(key);
+              }
+            });
+            document.getElementById("hint").innerHTML = A.toString() + " decodes to A and " + B.toString() + " decodes to B.";
+          }
+          break;
+        case "crib":
+          return crib(encoder);
+        case "cryptanalysis":
+          return noKeyword(encoder)
+      }
+    }
     function nihilist(encoder) {
       switch (encoder.hint) {
         case "simple":
-          document.getElementById("hint").innerHTML = 
+          document.getElementById("hint").innerHTML =
             "the polybius keyword is " + encoder.keywords.keyword1 +
             " and the text keyword is " + encoder.keywords.keyword2;
           break;
@@ -86,6 +115,12 @@ class Encoder {
       case "k3 aristocrat":
         mainCase(this);
         break;
+      case "baconian":
+        baconian(this);
+        break;
+      case "baconiank1":
+        baconian(this);
+        break;
       case "checkerboard":
         mainCase(this);
         break;
@@ -97,12 +132,13 @@ class Encoder {
         break;
       case "k1 patristocrat":
         mainCase(this);
-        return;
+        break;
       case "k2 patristocrat":
         mainCase(this);
         break;
       case "porta":
         mainCase(this);
+        break;
     }
   }
   encodeAristocrat(patristocrat) {
@@ -120,7 +156,7 @@ class Encoder {
       if (/\w/g.test(character)) {
         this.cipherText +=
           this.alphabets.shuffledAlphabets[1][
-            this.alphabets.normalAlphabet.indexOf(character)
+          this.alphabets.normalAlphabet.indexOf(character)
           ];
       } else {
         if (!patristocrat) {
@@ -262,6 +298,53 @@ class Encoder {
     }
     this.fillCipherText();
     this.tableConstructor.createPortaTable();
+  }
+  encodeBaconian(type) {
+    switch (type) {
+      case "normal":
+        this.cipherType = "baconian";
+        break;
+      case "number":
+        this.cipherType = "baconiank1";
+        break;
+    }
+    const AChars = ["b", "8", "🦋", "[", "/", ".", "<"];
+    const BChars = ["d", "3", "🐛", "]", "\\", ",", ">"];
+    let charIndex = Math.floor(Math.random() * AChars.length);
+    this.baconianKey.set("A", AChars[charIndex]);
+    this.baconianKey.set("B", BChars[charIndex]);
+    let index = -1;
+    this.plainText.split("").forEach((letter) => {
+      letter = letter.toUpperCase();
+      if (/\w/.test(letter)) {
+        let baconianKey = this.alphabets.baconianAlphabet.get(letter);
+        index++;
+        if (index > 7) {
+          this.cipherText += "\n";
+          index = 0;
+        }
+        if (type == "normal") {
+          baconianKey.split('').forEach((letter) => {
+            if (letter == "A") {
+              this.cipherText += this.baconianKey.get("A");
+            }
+            if (letter == "B") {
+              this.cipherText += this.baconianKey.get("B");
+            }
+          })
+        }
+        if (type == "number") {
+          baconianKey.split('').forEach((letter) => {
+            let digit = Math.floor(Math.random() * 10);
+            while (this.alphabets.numberBaconian.get(digit) != letter) {
+              digit = Math.floor(Math.random() * 10);
+            }
+            this.cipherText += digit;
+          });
+        }
+      }
+    })
+    this.fillCipherText();
   }
   encodeCheckerboard() {
     this.cipherType = "checkerboard";
