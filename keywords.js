@@ -1,6 +1,7 @@
 class Keywords {
   constructor(plainText) {
     this.plainText = plainText;
+    this.fiveLetterWords = [];
     this.keyword1 = "";
     this.keyword2 = "";
     this.rowDesignator = "";
@@ -31,6 +32,7 @@ class Keywords {
     let words = await fetch(wordListURL);
     if (words.ok) {
       let split = (await words.text()).split("\n");
+      this.fiveLetterWords = split.slice().filter((word) => word.length == 5);
       let wordsList = split.filter(
         (word) => word.length >= minLength && word.length <= maxLength,
       );

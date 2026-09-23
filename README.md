@@ -11,13 +11,12 @@ The algorithms I created to encode the ciphers were made from the steps found in
 ## Current Ciphers
 
 * Aristocrat *... K3* and Patristocrat *... K2*
-* Baconian (Normal and Number)
+* Baconians
 * Nihilist and Checkerboard
 * Porta
 
 ## Future Ciphers
 
-* Word Baconian
 * Caesar
 * Complete Columnar Transposition
 * Cryptarithm

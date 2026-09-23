@@ -10,6 +10,7 @@ class Alphabets {
     this.polybiusAlphabet = [];
     this.baconianAlphabet = new Map();
     this.numberBaconian = new Map();
+    this.wordBaconian = {};
   }
   test() {
     console.log(this.normalAlphabet);
@@ -20,6 +21,7 @@ class Alphabets {
     console.log(this.polybiusAlphabet);
     console.log(this.baconianAlphabet);
     console.log(this.numberBaconian);
+    console.log(this.wordBaconian);
   }
   generateAlphabets() {
     this.generateNormalAlphabet();
@@ -31,6 +33,7 @@ class Alphabets {
     this.generatePolybiusAlphabet();
     this.generateBaconianAlphabet();
     this.generateNumberBaconian();
+    this.generateWordBaconianWords();
   }
   insertKeyword(shift, keyword) {
     let newAlphabet = [...this.normalAlphabet];
@@ -65,6 +68,34 @@ class Alphabets {
       this.numberBaconian.set(digit, "B");
       digits.splice(index, 1);
     }
+  }
+  generateWordBaconianWords() {
+    this.wordBaconian = {
+      "letters": {},
+      "words": {}
+    };
+    this.baconianAlphabet.forEach((key, value) => {
+      this.wordBaconian.words[key] = [];
+    });
+    let letters = this.normalAlphabet.slice();
+    let patterns = ["AABBAB", "ABAB", "AAABABBB", "ABBBAA", "BAAABB", "ABBA", "BAAB"];
+    let pattern = patterns[Math.floor(Math.random() * patterns.length)];
+    for (let i = 0; i < 26; i++) {
+      let letter = letters[i];
+      document.getElementById("hint").innerHTML = pattern[i % pattern.length];
+      this.wordBaconian.letters[letter] = pattern[i % pattern.length];
+    }
+    this.keywords.fiveLetterWords.forEach((word) => {
+      let baconian = "";
+      word.split("").forEach((letter) => {
+        baconian += this.wordBaconian.letters[letter.toUpperCase()];
+      });
+      this.baconianAlphabet.forEach((key, value) => {
+        if (key == baconian) {
+          this.wordBaconian.words[key].push(word);
+        }
+      });
+    });
   }
   generateBaconianAlphabet() {
     this.baconianAlphabet.set("A", "AAAAA");

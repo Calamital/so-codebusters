@@ -71,11 +71,28 @@ class Encoder {
               }
             });
             document.getElementById("hint").innerHTML = A.toString() + " decodes to A and " + B.toString() + " decodes to B.";
+          } else if (encoder.cipherType == "baconiank2") {
+            let A = [];
+            let B = [];
+            Object.entries(encoder.alphabets.wordBaconian["letters"]).forEach(([value, key]) => {
+              if (key[0] == "A") {
+                A.push(value);
+              }
+              if (key[0] == "B") {
+                B.push(value);
+              }
+            });
+            A.sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0));
+            B.sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0));
+            document.getElementById("hint").innerHTML = A.toString() + " decodes to A and " + B.toString() + " decodes to B.";
           }
           break;
         case "crib":
           return crib(encoder);
         case "cryptanalysis":
+          if (encoder.cipherType == "baconiank2") {
+            return crib(encoder);
+          }
           return noKeyword(encoder)
       }
     }
@@ -119,6 +136,9 @@ class Encoder {
         baconian(this);
         break;
       case "baconiank1":
+        baconian(this);
+        break;
+      case "baconiank2":
         baconian(this);
         break;
       case "checkerboard":
@@ -307,6 +327,9 @@ class Encoder {
       case "number":
         this.cipherType = "baconiank1";
         break;
+      case "word":
+        this.cipherType = "baconiank2";
+        break;
     }
     const AChars = ["b", "8", "🦋", "[", "/", ".", "<"];
     const BChars = ["d", "3", "🐛", "]", "\\", ",", ">"];
@@ -314,6 +337,7 @@ class Encoder {
     this.baconianKey.set("A", AChars[charIndex]);
     this.baconianKey.set("B", BChars[charIndex]);
     let index = -1;
+    document.getElementById("hint").innerHTML = type + "A";
     this.plainText.split("").forEach((letter) => {
       letter = letter.toUpperCase();
       if (/\w/.test(letter)) {
@@ -341,6 +365,11 @@ class Encoder {
             }
             this.cipherText += digit;
           });
+        }
+        if (type == "word") {
+          let possibleWords = this.alphabets.wordBaconian["words"][baconianKey];
+          let index = Math.floor(Math.random() * possibleWords.length);
+          this.cipherText += possibleWords[index].toUpperCase() + " ";
         }
       }
     })

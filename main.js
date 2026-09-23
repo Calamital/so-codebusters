@@ -30,6 +30,9 @@ async function main(cipher, override, newAuthor, newPlainText, newKeywords, newD
     case "baconiank1":
       encoder.encodeBaconian("number");
       break;
+    case "baconiank2":
+      encoder.encodeBaconian("word");
+      break;
     case "checkerboard":
       encoder.encodeCheckerboard();
       break;
